@@ -1,0 +1,22 @@
+
+This directory is intended for PlatformIO Test Runner and project tests.
+
+Unit Testing is a software testing method by which individual units of
+source code, sets of one or more MCU program modules together with associated
+control data, usage procedures, and operating procedures, are tested to
+determine whether they are fit for use. Unit testing finds problems early
+in the development cycle.
+
+More information about PlatformIO Unit Testing:
+- https://docs.platformio.org/en/latest/advanced/unit-testing/index.html
+
+Practical project tests (host-side, no hardware required):
+
+- Decoder regression tests for `chirpstack/decoder.js`:
+	- Run with Node.js from project root:
+		`node test/decoder.test.js`
+	- Verifies:
+		- Port 1 channel mapping (including debug RF channels 205-208)
+		- Port 2 daily summary decoding
+		- Port 3 binary decoding v1 backward compatibility
+		- Port 3 binary decoding v2 (32-bit mask, RF debug fields)
