@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "water_node")(type "KiCad")(uri "${KIPRJMOD}/water_node.kicad_sym")(options "")(descr "project symbols (TPS16630)"))
+)
