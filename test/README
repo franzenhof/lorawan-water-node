@@ -16,7 +16,17 @@ Practical project tests (host-side, no hardware required):
 	- Run with Node.js from project root:
 		`node test/decoder.test.js`
 	- Verifies:
-		- Port 1 channel mapping (including debug RF channels 205-208)
-		- Port 2 daily summary decoding
-		- Port 3 binary decoding v1 backward compatibility
-		- Port 3 binary decoding v2 (32-bit mask, RF debug fields)
+		- Port 1 channel mapping (including debug RF channels 205-208 and
+		  the wide Power/Generic Sensor channels 11, 19, 203, 204)
+		- Port 2 daily summary decoding (legacy analog and wide volume)
+		- Port 3 rejects unknown protocol versions
+		- Port 3 binary decoding v2 (still accepted) and v3 (widened fields)
+		- PCB v2.0 I/O fields: digital inputs/outputs, 2nd flow sensor and
+		  pulse counter on port 1 (ch 21-24) and port 3 (bits 28-31)
+
+- Encoder/decoder round trip for the binary format (FPort 3):
+	- Needs a C++ compiler (c++/g++/clang++; CXX overrides), skipped if none:
+		`node test/payload_roundtrip.test.js`
+	- Compiles src/payload_binary.cpp with test/payload_roundtrip.cpp for
+	  the host, encodes known measurement sets (full, minimal, out of range)
+	  and checks decoder.js returns the same values (and clamps, not wraps).
